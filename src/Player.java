@@ -2,6 +2,7 @@ import Heroes.Archer;
 import Heroes.Hero;
 import Heroes.Warrior;
 import Heroes.Wizard;
+import Inventory.Inventory;
 
 import java.util.Scanner;
 
