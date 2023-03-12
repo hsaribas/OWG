@@ -1,4 +1,4 @@
-import Heroes.Archer;
+import Heroes.Ninja;
 import Heroes.Hero;
 import Heroes.Warrior;
 import Heroes.Wizard;
@@ -9,12 +9,12 @@ import java.util.Scanner;
 public class Player {
 
     private String player;
+    private Inventory inventory;
     private String hero;
     private int damage;
     private int health;
-    private int defaultHealth;
     private int gold;
-    private Inventory inventory;
+    private int defaultHealth;
 
     private final Scanner scan = new Scanner(System.in);
 
@@ -23,8 +23,8 @@ public class Player {
         this.inventory = new Inventory();
     }
 
-    public void pickHero() {
-        Hero[] heroes = {new Warrior(), new Archer(), new Wizard()};
+    public void selectHero() {
+        Hero[] heroes = {new Warrior(), new Ninja(), new Wizard()};
         for (Hero h : heroes) {
             System.out.println("Hero: " + h.getHero() +
                     " | Id: " + h.getId() +
@@ -41,14 +41,14 @@ public class Player {
                 heroProperty(new Warrior());
                 break;
             case 2:
-                heroProperty(new Archer());
+                heroProperty(new Ninja());
                 break;
             case 3:
                 heroProperty(new Wizard());
                 break;
             default:
                 System.out.println("Please enter a valid id!");
-                pickHero();
+                selectHero();
                 break;
         }
         System.out.println();
@@ -62,12 +62,31 @@ public class Player {
         this.setGold(hero.getGold());
     }
 
+    public void showInfo() {
+        System.out.println("Hero: " + this.getHero() +
+                " | Weapon: " + this.getInventory().getWeapon().getWeapon() +
+                " | Damage: " + this.getInventory().getWeapon().getDamage() +
+                " | Armor: " + this.getInventory().getArmor().getArmor() +
+                " | Blocking: " + this.getInventory().getArmor().getBlocking() +
+                " | Health: " + this.getHealth() +
+                " | Gold: " + this.getGold() +
+                " | Materials: " + this.getInventory().getMaterialList());
+    }
+
     public String getPlayer() {
         return player;
     }
 
     public void setPlayer(String player) {
         this.player = player;
+    }
+
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(Inventory inventory) {
+        this.inventory = inventory;
     }
 
     public String getHero() {
@@ -97,14 +116,6 @@ public class Player {
         this.health = health;
     }
 
-    public int getDefaultHealth() {
-        return defaultHealth;
-    }
-
-    public void setDefaultHealth(int defaultHealth) {
-        this.defaultHealth = defaultHealth;
-    }
-
     public int getGold() {
         return gold;
     }
@@ -113,11 +124,11 @@ public class Player {
         this.gold = gold;
     }
 
-    public Inventory getInventory() {
-        return inventory;
+    public int getDefaultHealth() {
+        return defaultHealth;
     }
 
-    public void setInventory(Inventory inventory) {
-        this.inventory = inventory;
+    public void setDefaultHealth(int defaultHealth) {
+        this.defaultHealth = defaultHealth;
     }
 }
