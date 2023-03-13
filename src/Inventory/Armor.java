@@ -7,11 +7,21 @@ public class Armor {
     private int blocking;
     private int price;
 
-    public Armor(String armor, int id, int blocking, int price){
+    public Armor(String armor, int id, int blocking, int price) {
         this.armor = armor;
         this.id = id;
         this.blocking = blocking;
         this.price = price;
+    }
+
+    public static Armor getArmorById(int id) {
+        Armor[] armors = {new LeatherArmor(), new CopperArmor(), new SteelArmor()};
+        for (Armor a : armors) {
+            if (a.getId() == id) {
+                return a;
+            }
+        }
+        return null;
     }
 
     public String getArmor() {

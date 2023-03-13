@@ -8,7 +8,7 @@ public class Hero {
     private int health;
     private int gold;
 
-    public Hero(String hero, int id, int damage, int health, int gold){
+    public Hero(String hero, int id, int damage, int health, int gold) {
         this.hero = hero;
         this.id = id;
         this.damage = damage;

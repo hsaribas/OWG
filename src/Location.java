@@ -7,7 +7,7 @@ public abstract class Location {
 
     public static Scanner scan = new Scanner(System.in);
 
-    public Location(Player player, String location){
+    public Location(Player player, String location) {
         this.player = player;
         this.location = location;
     }

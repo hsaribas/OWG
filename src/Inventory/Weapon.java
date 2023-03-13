@@ -14,6 +14,16 @@ public class Weapon {
         this.price = price;
     }
 
+    public static Weapon getWeaponById(int id) {
+        Weapon[] weapons = {new Spear(), new Sword(), new Dagger(), new Arrow(), new MagicWand(), new SpellBook()};
+        for (Weapon w : weapons) {
+            if (w.getId() == id) {
+                return w;
+            }
+        }
+        return null;
+    }
+
     public String getWeapon() {
         return weapon;
     }

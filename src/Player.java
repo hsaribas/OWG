@@ -60,6 +60,7 @@ public class Player {
         this.setDamage(hero.getDamage());
         this.setHealth(hero.getHealth());
         this.setGold(hero.getGold());
+        this.setDefaultHealth(hero.getHealth());
     }
 
     public void showInfo() {
