@@ -7,12 +7,13 @@ public class Game {
     public static Scanner scan = new Scanner(System.in);
 
     public void start() {
-        System.out.print("Welcome,\nEnter a name to your character to start the game: ");
+        System.out.print("Welcome!\n" +
+                "Enter a name to your character to start the game: ");
         String playerName = scan.nextLine();
         player = new Player(playerName);
 
         System.out.println();
-        System.out.println(">> Let's get started [" + player.getPlayer() + "] <<");
+        System.out.println("Let's get started [" + player.getPlayer() + "]");
 
         System.out.println();
         player.selectHero();
@@ -29,6 +30,7 @@ public class Game {
                 System.out.println("See you again!");
                 break;
             }
+
             if (!location.onLocation()) {
                 System.out.println();
                 System.out.println("GAME OVER!");
@@ -48,7 +50,8 @@ public class Game {
                 "6 - Ghost Forest\n" +
                 "7 - Land of Giants\n" +
                 "8 - Iceland");
-        System.out.print("Where do you want to go to? Select a region:  ");
+        System.out.println();
+        System.out.print("Where do you want to go to? Select a region: ");
         int region = scan.nextInt();
 
         System.out.println();
@@ -81,7 +84,7 @@ public class Game {
                 location = new Iceland(player);
                 break;
             default:
-                System.out.println("Please enter a valid number!");
+                System.out.println("Invalid number! Try again.");
                 game();
                 break;
         }

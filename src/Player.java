@@ -15,7 +15,6 @@ public class Player {
     private int health;
     private int gold;
     private int defaultHealth;
-
     private final Scanner scan = new Scanner(System.in);
 
     public Player(String player) {
@@ -38,16 +37,16 @@ public class Player {
         int decision = scan.nextInt();
         switch (decision) {
             case 1:
-                heroProperty(new Warrior());
+                heroProperties(new Warrior());
                 break;
             case 2:
-                heroProperty(new Ninja());
+                heroProperties(new Ninja());
                 break;
             case 3:
-                heroProperty(new Wizard());
+                heroProperties(new Wizard());
                 break;
             default:
-                System.out.println("Please enter a valid id!");
+                System.out.println("Invalid number! Try again.");
                 selectHero();
                 break;
         }
@@ -55,7 +54,7 @@ public class Player {
         System.out.println("Your pick is -> " + this.getHero());
     }
 
-    public void heroProperty(Hero hero) {
+    public void heroProperties(Hero hero) {
         this.setHero(hero.getHero());
         this.setDamage(hero.getDamage());
         this.setHealth(hero.getHealth());
@@ -68,7 +67,7 @@ public class Player {
                 " | Weapon: " + this.getInventory().getWeapon().getWeapon() +
                 " | Damage: " + this.getInventory().getWeapon().getDamage() +
                 " | Armor: " + this.getInventory().getArmor().getArmor() +
-                " | Blocking: " + this.getInventory().getArmor().getBlocking() +
+                " | Blocking: " + this.getInventory().getArmor().getBlock() +
                 " | Health: " + this.getHealth() +
                 " | Gold: " + this.getGold() +
                 " | Materials: " + this.getInventory().getMaterialList());
@@ -104,6 +103,10 @@ public class Player {
 
     public void setDamage(int damage) {
         this.damage = damage;
+    }
+
+    public int getTotalDamage() {
+        return damage + this.getInventory().getWeapon().getDamage();
     }
 
     public int getHealth() {

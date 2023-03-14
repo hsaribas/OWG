@@ -1,5 +1,8 @@
 package Inventory;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Weapon {
 
     private String weapon;
@@ -16,12 +19,23 @@ public class Weapon {
 
     public static Weapon getWeaponById(int id) {
         Weapon[] weapons = {new Spear(), new Sword(), new Dagger(), new Arrow(), new MagicWand(), new SpellBook()};
+
         for (Weapon w : weapons) {
             if (w.getId() == id) {
                 return w;
             }
         }
         return null;
+    }
+
+    public static List<Integer> weaponIds() {
+        Weapon[] weapons = {new Spear(), new Sword(), new Dagger(), new Arrow(), new MagicWand(), new SpellBook()};
+        List<Integer> weaponIdList = new ArrayList<>();
+
+        for (Weapon w : weapons) {
+            weaponIdList.add(w.getId());
+        }
+        return weaponIdList;
     }
 
     public String getWeapon() {

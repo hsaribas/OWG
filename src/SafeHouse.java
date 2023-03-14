@@ -6,7 +6,7 @@ public class SafeHouse extends Location {
 
     @Override
     public boolean onLocation() {
-        System.out.println("|| Now you are in Safe House ||\n" +
+        System.out.println("|| Now you are in the Safe House ||\n" +
                 "You can renew your health and take a rest.");
 
         this.getPlayer().setHealth(this.getPlayer().getDefaultHealth());
