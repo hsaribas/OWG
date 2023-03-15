@@ -35,12 +35,10 @@ public class Shop extends Location {
                     break;
                 case 1:
                     showWeapons();
-                    System.out.println();
                     buyWeapon();
                     break;
                 case 2:
                     showArmors();
-                    System.out.println();
                     buyArmor();
                     break;
             }
@@ -131,12 +129,12 @@ public class Shop extends Location {
         if (selectedWeapon != null) {
             if (this.getPlayer().getGold() < selectedWeapon.getPrice()) {
                 System.out.println("You don't have enough gold to buy this weapon.");
-                showWeapons();
-            }
-            this.getPlayer().setGold(this.getPlayer().getGold() - selectedWeapon.getPrice());
-            this.getPlayer().getInventory().setWeapon(selectedWeapon);
+            } else {
+                this.getPlayer().setGold(this.getPlayer().getGold() - selectedWeapon.getPrice());
+                this.getPlayer().getInventory().setWeapon(selectedWeapon);
 
-            System.out.println("Your new weapon is -> [" + Objects.requireNonNull(Weapon.getWeaponById(id)).getWeapon() + "]");
+                System.out.println("Your new weapon is -> [" + Objects.requireNonNull(Weapon.getWeaponById(id)).getWeapon() + "]");
+            }
         }
     }
 
@@ -160,23 +158,23 @@ public class Shop extends Location {
                 "Enter the id of the armor you want to buy: ");
         int pickedArmor = scan.nextInt();
 
-        while (pickedArmor < 0 || pickedArmor > Armor.armorIds().size()){
+        while (pickedArmor < 0 || pickedArmor > Armor.armorIds().size()) {
             System.out.print("Invalid number! Try again: ");
             pickedArmor = scan.nextInt();
         }
         System.out.println();
 
-        if(pickedArmor != 0){
+        if (pickedArmor != 0) {
             Armor selectedArmor = Armor.getArmorById(pickedArmor);
-            if(selectedArmor != null){
-                if(this.getPlayer().getGold() < selectedArmor.getPrice()){
+            if (selectedArmor != null) {
+                if (this.getPlayer().getGold() < selectedArmor.getPrice()) {
                     System.out.println("You don't have enough gold to buy this armor.");
-                    showArmors();
-                }
-                this.getPlayer().setGold(this.getPlayer().getGold() - selectedArmor.getPrice());
-                this.getPlayer().getInventory().setArmor(selectedArmor);
+                } else {
+                    this.getPlayer().setGold(this.getPlayer().getGold() - selectedArmor.getPrice());
+                    this.getPlayer().getInventory().setArmor(selectedArmor);
 
-                System.out.println("Your new armor is -> [" + Objects.requireNonNull(Armor.getArmorById(selectedArmor.getId())).getArmor() + "]");
+                    System.out.println("Your new armor is -> [" + Objects.requireNonNull(Armor.getArmorById(selectedArmor.getId())).getArmor() + "]");
+                }
             }
         }
     }

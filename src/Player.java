@@ -51,7 +51,7 @@ public class Player {
                 break;
         }
         System.out.println();
-        System.out.println("Your pick is -> " + this.getHero());
+        System.out.println("Your pick is -> [" + this.getHero() + "]");
     }
 
     public void heroProperties(Hero hero) {

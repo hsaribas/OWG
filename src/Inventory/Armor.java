@@ -19,7 +19,6 @@ public class Armor {
 
     public static Armor getArmorById(int id) {
         Armor[] armors = {new LeatherArmor(), new CopperArmor(), new SteelArmor()};
-
         for (Armor a : armors) {
             if (a.getId() == id) {
                 return a;
@@ -31,7 +30,6 @@ public class Armor {
     public static List<Integer> armorIds() {
         Armor[] armors = {new LeatherArmor(), new CopperArmor(), new SteelArmor()};
         List<Integer> armorIdList = new ArrayList<>();
-
         for (Armor a : armors) {
             armorIdList.add(a.getId());
         }

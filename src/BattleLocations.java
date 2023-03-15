@@ -19,10 +19,77 @@ public abstract class BattleLocations extends Location {
     public boolean onLocation() {
         int count = randomMonsters();
         System.out.println("Now you are in -> [" + this.getLocation() + "]\n" +
-                "Get ready to fight " + count + this.getMonster() + "!");
+                "Get ready to fight " + count + " " + this.getMonster().getMonster() + ".");
 
-
+        if (fight(count)) {
+            return true;
+        }
+        if (this.getPlayer().getHealth() <= 0) {
+            System.out.println();
+            System.out.println("You are died...");
+            return false;
+        }
         return true;
+    }
+
+    public boolean fight(int count) {
+        int num = count;
+
+        for (int i = 1; i <= count; i++) {
+            this.getMonster().setHealth(this.getMonster().getDefaultHealth());
+            System.out.println();
+
+            playerStats();
+            System.out.println();
+            monsterStats(i);
+            System.out.println();
+
+            while (this.getPlayer().getHealth() > 0 && this.getMonster().getHealth() > 0) {
+                System.out.print("Press 'A' to attack or press 'E' to escape: ");
+                String decision = scan.nextLine().toUpperCase();
+
+                if (decision.equals("A")) {
+                    this.getMonster().setHealth(this.getMonster().getHealth() - this.getPlayer().getTotalDamage());
+                    System.out.println();
+                    currentHealth();
+
+                    if (this.getMonster().getHealth() > 0) {
+                        int monsterDamage = this.getMonster().getDamage() - this.getPlayer().getInventory().getArmor().getBlock();
+                        if (monsterDamage < 0) {
+                            monsterDamage = 0;
+                        }
+                        this.getPlayer().setHealth(monsterDamage);
+                        System.out.println();
+                        currentHealth();
+                    }
+                } else {
+                    System.out.println();
+                    System.out.println("You left the battle location.");
+                    return false;
+                }
+            }
+            if (this.getPlayer().getHealth() > this.getMonster().getHealth()) {
+                System.out.println();
+                System.out.println("Great fight!");
+                this.getPlayer().setGold(this.getMonster().getReward());
+                System.out.println(this.getMonster().getReward() + " gold earned.");
+                num--;
+
+                if (num == 0) {
+                    System.out.println();
+                    this.getPlayer().getInventory().setMaterialList(this.getMaterial());
+                    System.out.println("You killed all creatures and gained new material -> [" + this.getMaterial() + "]");
+                }
+            } else {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void currentHealth() {
+        System.out.println("[" + this.getPlayer().getPlayer() + "]'s health: " + this.getPlayer().getHealth());
+        System.out.println(this.getMonster().getMonster() + "'s health: " + this.getMonster().getHealth());
     }
 
     public void playerStats() {

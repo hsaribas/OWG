@@ -13,7 +13,7 @@ public class Game {
         player = new Player(playerName);
 
         System.out.println();
-        System.out.println("Let's get started [" + player.getPlayer() + "]");
+        System.out.println("Let's get started [" + player.getPlayer() + "]!");
 
         System.out.println();
         player.selectHero();
@@ -30,7 +30,6 @@ public class Game {
                 System.out.println("See you again!");
                 break;
             }
-
             if (!location.onLocation()) {
                 System.out.println();
                 System.out.println("GAME OVER!");
@@ -41,7 +40,7 @@ public class Game {
 
     public void game() {
         System.out.println();
-        System.out.println("<< Regions >>\n" +
+        System.out.println("|| Regions ||\n" +
                 "1 - Safe House\n" +
                 "2 - Shop\n" +
                 "3 - Sahara Desert\n" +
@@ -61,32 +60,46 @@ public class Game {
                 break;
             case 1:
                 location = new SafeHouse(player);
+                if (this.player.getInventory().getMaterialList().size() == 6) {
+                    System.out.println("You are collected all the materials.\n\n" +
+                            "* * * Congratulations * * *\n" +
+                            "* * * You Won The Game * * *");
+                }
                 break;
             case 2:
                 location = new Shop(player);
                 break;
             case 3:
-                location = new SaharaDesert(player);
+                materialCheck("Snake skin", new SaharaDesert(player));
                 break;
             case 4:
-                location = new SpiderDungeon(player);
+                materialCheck("Spider legs", new SpiderDungeon(player));
                 break;
             case 5:
-                location = new GreatMountain(player);
+                materialCheck("Bear claw", new GreatMountain(player));
                 break;
             case 6:
-                location = new GhostForest(player);
+                materialCheck("Wood", new GhostForest(player));
                 break;
             case 7:
-                location = new LandOfGiants(player);
+                materialCheck("Orc tooth", new LandOfGiants(player));
                 break;
             case 8:
-                location = new Iceland(player);
+                materialCheck("Ice globe", new Iceland(player));
                 break;
             default:
                 System.out.println("Invalid number! Try again.");
                 game();
                 break;
+        }
+    }
+
+    public void materialCheck(String material, Location currentLocation) {
+        if (this.player.getInventory().getMaterialList().contains(material)) {
+            System.out.println("You have already crossed this area and captured the material. You cannot re-enter the zone.");
+            game();
+        } else {
+            location = currentLocation;
         }
     }
 }
