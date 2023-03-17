@@ -58,7 +58,7 @@ public abstract class BattleLocations extends Location {
                         if (monsterDamage < 0) {
                             monsterDamage = 0;
                         }
-                        this.getPlayer().setHealth(monsterDamage);
+                        this.getPlayer().setHealth(this.getPlayer().getHealth() - monsterDamage);
                         System.out.println();
                         currentHealth();
                     }
@@ -70,8 +70,9 @@ public abstract class BattleLocations extends Location {
             }
             if (this.getPlayer().getHealth() > this.getMonster().getHealth()) {
                 System.out.println();
-                System.out.println("Great fight!");
-                this.getPlayer().setGold(this.getMonster().getReward());
+                System.out.println("Great fight!\n" +
+                        "You killed the monster.");
+                this.getPlayer().setGold(this.getPlayer().getGold() + this.getMonster().getReward());
                 System.out.println(this.getMonster().getReward() + " gold earned.");
                 num--;
 

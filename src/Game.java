@@ -35,6 +35,9 @@ public class Game {
                 System.out.println("GAME OVER!");
                 break;
             }
+            if (this.player.getInventory().getMaterialList().size() == 6) {
+                break;
+            }
         }
     }
 
@@ -94,12 +97,12 @@ public class Game {
         }
     }
 
-    public void materialCheck(String material, Location currentLocation) {
+    public void materialCheck(String material, Location regionPreference) {
         if (this.player.getInventory().getMaterialList().contains(material)) {
-            System.out.println("You have already crossed this area and captured the material. You cannot re-enter the zone.");
+            System.out.println("You have already crossed this area and captured the material. You cannot re-enter the zone!");
             game();
         } else {
-            location = currentLocation;
+            location = regionPreference;
         }
     }
 }
