@@ -5,6 +5,7 @@ public class Game {
     private Player player;
     private Location location;
     public static Scanner scan = new Scanner(System.in);
+    boolean result = true;
 
     public void start() {
         System.out.print("Welcome!\n" +
@@ -20,7 +21,7 @@ public class Game {
 
         location = null;
 
-        while (true) {
+        while (result) {
             System.out.println();
             player.showInfo();
             game();
@@ -35,15 +36,13 @@ public class Game {
                 System.out.println("GAME OVER!");
                 break;
             }
-            if (this.player.getInventory().getMaterialList().size() == 6) {
-                break;
-            }
         }
     }
 
     public void game() {
         System.out.println();
         System.out.println("|| Regions ||\n" +
+                "0 - Quit Game\n" +
                 "1 - Safe House\n" +
                 "2 - Shop\n" +
                 "3 - Sahara Desert\n" +
@@ -64,9 +63,11 @@ public class Game {
             case 1:
                 location = new SafeHouse(player);
                 if (this.player.getInventory().getMaterialList().size() == 6) {
-                    System.out.println("You are collected all the materials.\n\n" +
+                    System.out.println("You have collected all the materials.\n\n" +
                             "* * * Congratulations * * *\n" +
                             "* * * You Won The Game * * *");
+                    result = false;
+                    location = null;
                 }
                 break;
             case 2:
