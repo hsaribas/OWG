@@ -18,15 +18,15 @@ public abstract class BattleLocations extends Location {
     @Override
     public boolean onLocation() {
         int count = randomMonsters();
-        System.out.println("Now you are in -> [" + this.getLocation() + "]\n" +
-                "Get ready to fight " + count + " " + this.getMonster().getMonster() + ".");
+        System.out.println("\tNow you are in -> [" + this.getLocation() + "]\n" +
+                "\tGet ready to fight " + count + " " + this.getMonster().getMonster() + ".");
 
         if (fight(count)) {
             return true;
         }
         if (this.getPlayer().getHealth() <= 0) {
             System.out.println();
-            System.out.println("You are died...");
+            System.out.println("\tYou are died...");
             return false;
         }
         return true;
@@ -45,7 +45,7 @@ public abstract class BattleLocations extends Location {
             System.out.println();
 
             while (this.getPlayer().getHealth() > 0 && this.getMonster().getHealth() > 0) {
-                System.out.print("Press 'A' to attack or press 'E' to escape: ");
+                System.out.print("\tPress 'A' to attack or press 'E' to escape: ");
                 String decision = scan.nextLine().toUpperCase();
 
                 if (decision.equals("A")) {
@@ -64,22 +64,22 @@ public abstract class BattleLocations extends Location {
                     }
                 } else {
                     System.out.println();
-                    System.out.println("You left the battle location.");
+                    System.out.println("\tYou left the battle location.");
                     return false;
                 }
             }
             if (this.getPlayer().getHealth() > this.getMonster().getHealth()) {
                 System.out.println();
-                System.out.println("Great fight!\n" +
-                        "You killed the monster.");
+                System.out.println("\tGreat fight!\n" +
+                        "\tYou killed the monster.");
                 this.getPlayer().setGold(this.getPlayer().getGold() + this.getMonster().getReward());
-                System.out.println(this.getMonster().getReward() + " gold earned.");
+                System.out.println("\t" + this.getMonster().getReward() + " gold earned.");
                 num--;
 
                 if (num == 0) {
                     System.out.println();
                     this.getPlayer().getInventory().setMaterialList(this.getMaterial());
-                    System.out.println("You killed all creatures and gained new material -> [" + this.getMaterial() + "]");
+                    System.out.println("\tYou killed all creatures and gained new material -> [" + this.getMaterial() + "]");
                 }
             } else {
                 return false;

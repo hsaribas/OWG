@@ -8,13 +8,13 @@ public class Game {
     boolean result = true;
 
     public void start() {
-        System.out.print("Welcome!\n" +
-                "Enter a name to your character to start the game: ");
+        System.out.print("\t* * * Welcome! * * *\n\n" +
+                "\tEnter a name to your character to start the game: ");
         String playerName = scan.nextLine();
         player = new Player(playerName);
 
         System.out.println();
-        System.out.println("Let's get started [" + player.getPlayer() + "]!");
+        System.out.println("\tLet's get started [" + player.getPlayer() + "]!");
 
         System.out.println();
         player.selectHero();
@@ -28,12 +28,12 @@ public class Game {
 
             if (location == null) {
                 System.out.println();
-                System.out.println("See you again!");
+                System.out.println("\tSee you again!");
                 break;
             }
             if (!location.onLocation()) {
                 System.out.println();
-                System.out.println("GAME OVER!");
+                System.out.println("\tGAME OVER!");
                 break;
             }
         }
@@ -52,7 +52,7 @@ public class Game {
                 "7 - Land of Giants\n" +
                 "8 - Iceland");
         System.out.println();
-        System.out.print("Where do you want to go to? Select a region: ");
+        System.out.print("\tWhere do you want to go to? Select a region: ");
         int region = scan.nextInt();
 
         System.out.println();
@@ -63,9 +63,9 @@ public class Game {
             case 1:
                 location = new SafeHouse(player);
                 if (this.player.getInventory().getMaterialList().size() == 6) {
-                    System.out.println("You have collected all the materials.\n\n" +
-                            "* * * Congratulations * * *\n" +
-                            "* * * You Won The Game * * *");
+                    System.out.println("\tYou have collected all the materials.\n\n" +
+                            "\t* * * Congratulations! * * *\n" +
+                            "\t* * * You Won The Game! * * *");
                     result = false;
                     location = null;
                 }
@@ -92,7 +92,7 @@ public class Game {
                 materialCheck("Ice globe", new Iceland(player));
                 break;
             default:
-                System.out.println("Invalid number! Try again.");
+                System.out.println("\tInvalid number! Try again.");
                 game();
                 break;
         }
@@ -100,7 +100,7 @@ public class Game {
 
     public void materialCheck(String material, Location regionPreference) {
         if (this.player.getInventory().getMaterialList().contains(material)) {
-            System.out.println("You have already crossed this area and captured the material. You cannot re-enter the zone!");
+            System.out.println("\tYou have already crossed this area and captured the material. You cannot re-enter the zone!");
             game();
         } else {
             location = regionPreference;

@@ -33,7 +33,7 @@ public class Player {
         }
         System.out.println();
 
-        System.out.print("Enter the id of the hero you want to pick: ");
+        System.out.print("\tEnter the id of the hero you want to pick: ");
         int decision = scan.nextInt();
         switch (decision) {
             case 1:
@@ -46,12 +46,12 @@ public class Player {
                 heroProperties(new Wizard());
                 break;
             default:
-                System.out.println("Invalid number! Try again.");
+                System.out.println("\tInvalid number! Try again.");
                 selectHero();
                 break;
         }
         System.out.println();
-        System.out.println("Your pick is -> [" + this.getHero() + "]");
+        System.out.println("\tYour pick is -> [" + this.getHero() + "]");
     }
 
     public void heroProperties(Hero hero) {
