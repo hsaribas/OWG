@@ -19,6 +19,7 @@ public class Weapon {
 
     public static Weapon getWeaponById(int id) {
         Weapon[] weapons = {new Spear(), new Sword(), new Dagger(), new Arrow(), new MagicWand(), new SpellBook()};
+
         for (Weapon w : weapons) {
             if (w.getId() == id) {
                 return w;
@@ -30,6 +31,7 @@ public class Weapon {
     public static List<Integer> weaponIds() {
         Weapon[] weapons = {new Spear(), new Sword(), new Dagger(), new Arrow(), new MagicWand(), new SpellBook()};
         List<Integer> weaponIdList = new ArrayList<>();
+
         for (Weapon w : weapons) {
             weaponIdList.add(w.getId());
         }

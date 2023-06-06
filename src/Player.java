@@ -24,17 +24,19 @@ public class Player {
 
     public void selectHero() {
         Hero[] heroes = {new Warrior(), new Ninja(), new Wizard()};
+
         for (Hero h : heroes) {
             System.out.println("Hero: " + h.getHero() +
-                    " | Id: " + h.getId() +
-                    " | Damage: " + h.getDamage() +
-                    " | Health: " + h.getHealth() +
-                    " | Gold: " + h.getGold());
+                               " | Id: " + h.getId() +
+                               " | Damage: " + h.getDamage() +
+                               " | Health: " + h.getHealth() +
+                               " | Gold: " + h.getGold());
         }
         System.out.println();
 
         System.out.print("\tEnter the id of the hero you want to pick: ");
         int decision = scan.nextInt();
+
         switch (decision) {
             case 1:
                 heroProperties(new Warrior());
@@ -64,13 +66,13 @@ public class Player {
 
     public void showInfo() {
         System.out.println("Hero: " + this.getHero() +
-                " | Weapon: " + this.getInventory().getWeapon().getWeapon() +
-                " | Damage: " + this.getInventory().getWeapon().getDamage() +
-                " | Armor: " + this.getInventory().getArmor().getArmor() +
-                " | Blocking: " + this.getInventory().getArmor().getBlock() +
-                " | Health: " + this.getHealth() +
-                " | Gold: " + this.getGold() +
-                " | Materials: " + this.getInventory().getMaterialList());
+                           " | Weapon: " + this.getInventory().getWeapon().getWeapon() +
+                           " | Damage: " + (this.getDamage() + this.getInventory().getWeapon().getDamage()) +
+                           " | Armor: " + this.getInventory().getArmor().getArmor() +
+                           " | Blocking: " + this.getInventory().getArmor().getBlock() +
+                           " | Health: " + this.getHealth() +
+                           " | Gold: " + this.getGold() +
+                           " | Materials: " + this.getInventory().getMaterialList());
     }
 
     public String getPlayer() {

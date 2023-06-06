@@ -11,14 +11,14 @@ public class Shop extends Location {
     @Override
     public boolean onLocation() {
         System.out.println("\t|| Now you are in the Shop ||\n" +
-                "\tYou can buy a new weapon to boost your damage and you can buy an armor to boost your blocking.");
-
+                           "\tYou can buy a new weapon to boost your damage and you can buy an armor to boost your blocking.");
         boolean showMenu = true;
+
         while (showMenu) {
             System.out.println();
             System.out.println("0 - Exit\n" +
-                    "1 - Weapons\n" +
-                    "2 - Armors");
+                               "1 - Weapons\n" +
+                               "2 - Armors");
             System.out.print("\tEnter the number of the action you want to do: ");
             int choice = scan.nextInt();
 
@@ -49,13 +49,13 @@ public class Shop extends Location {
     public void showWeapons() {
         System.out.println();
         System.out.println("|| Weapons ||");
-
         Weapon[] weapons = {new Spear(), new Sword(), new Dagger(), new Arrow(), new MagicWand(), new SpellBook()};
+
         for (Weapon w : weapons) {
             System.out.println("Weapon: " + w.getWeapon() +
-                    " | Id: " + w.getId() +
-                    " | Damage: " + w.getDamage() +
-                    " | Price: " + w.getPrice());
+                               " | Id: " + w.getId() +
+                               " | Damage: " + w.getDamage() +
+                               " | Price: " + w.getPrice());
         }
         System.out.println("\tPress '0' if you want to leave the shop.");
     }
@@ -63,7 +63,7 @@ public class Shop extends Location {
     public void buyWeapon() {
         System.out.println();
         System.out.print("\tChoose a suitable weapon for your hero.\n" +
-                "\tEnter the id of the weapon you want to buy: ");
+                         "\tEnter the id of the weapon you want to buy: ");
         int pickedWeapon = scan.nextInt();
 
         while (pickedWeapon < 0 || pickedWeapon > Weapon.weaponIds().size()) {
@@ -126,13 +126,13 @@ public class Shop extends Location {
 
     public void weaponBuyingProcess(int id) {
         Weapon selectedWeapon = Weapon.getWeaponById(id);
+
         if (selectedWeapon != null) {
             if (this.getPlayer().getGold() < selectedWeapon.getPrice()) {
                 System.out.println("\tYou don't have enough gold to buy this weapon.");
             } else {
                 this.getPlayer().setGold(this.getPlayer().getGold() - selectedWeapon.getPrice());
                 this.getPlayer().getInventory().setWeapon(selectedWeapon);
-
                 System.out.println("\tYour new weapon is -> [" + Objects.requireNonNull(Weapon.getWeaponById(id)).getWeapon() + "]");
             }
         }
@@ -141,13 +141,13 @@ public class Shop extends Location {
     public void showArmors() {
         System.out.println();
         System.out.println("|| Armors ||");
-
         Armor[] armors = {new LeatherArmor(), new CopperArmor(), new SteelArmor()};
+
         for (Armor a : armors) {
             System.out.println("Armor: " + a.getArmor() +
-                    " | Id: " + a.getId() +
-                    " | Blocking: " + a.getBlock() +
-                    " | Price: " + a.getPrice());
+                               " | Id: " + a.getId() +
+                               " | Blocking: " + a.getBlock() +
+                               " | Price: " + a.getPrice());
         }
         System.out.println("\tPress '0' if you want to leave the shop.");
     }
@@ -155,7 +155,7 @@ public class Shop extends Location {
     public void buyArmor() {
         System.out.println();
         System.out.print("\tChoose an armor for your hero.\n" +
-                "\tEnter the id of the armor you want to buy: ");
+                         "\tEnter the id of the armor you want to buy: ");
         int pickedArmor = scan.nextInt();
 
         while (pickedArmor < 0 || pickedArmor > Armor.armorIds().size()) {
@@ -172,7 +172,6 @@ public class Shop extends Location {
                 } else {
                     this.getPlayer().setGold(this.getPlayer().getGold() - selectedArmor.getPrice());
                     this.getPlayer().getInventory().setArmor(selectedArmor);
-
                     System.out.println("\tYour new armor is -> [" + Objects.requireNonNull(Armor.getArmorById(selectedArmor.getId())).getArmor() + "]");
                 }
             }

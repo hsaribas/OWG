@@ -19,7 +19,7 @@ public abstract class BattleLocations extends Location {
     public boolean onLocation() {
         int count = randomMonsters();
         System.out.println("\tNow you are in -> [" + this.getLocation() + "]\n" +
-                "\tGet ready to fight " + count + " " + this.getMonster().getMonster() + ".");
+                           "\tGet ready to fight " + count + " " + this.getMonster().getMonster() + ".");
 
         if (fight(count)) {
             return true;
@@ -38,7 +38,6 @@ public abstract class BattleLocations extends Location {
         for (int i = 1; i <= count; i++) {
             this.getMonster().setHealth(this.getMonster().getDefaultHealth());
             System.out.println();
-
             playerStats();
             System.out.println();
             monsterStats(i);
@@ -68,10 +67,11 @@ public abstract class BattleLocations extends Location {
                     return false;
                 }
             }
+
             if (this.getPlayer().getHealth() > this.getMonster().getHealth()) {
                 System.out.println();
                 System.out.println("\tGreat fight!\n" +
-                        "\tYou killed the monster.");
+                                   "\tYou killed the monster.");
                 this.getPlayer().setGold(this.getPlayer().getGold() + this.getMonster().getReward());
                 System.out.println("\t" + this.getMonster().getReward() + " gold earned.");
                 num--;
@@ -96,18 +96,18 @@ public abstract class BattleLocations extends Location {
     public void playerStats() {
         System.out.println("<< Player " + this.getPlayer().getPlayer() + "'s Stats >>");
         System.out.println("Weapon: " + this.getPlayer().getInventory().getWeapon().getWeapon() +
-                " | Damage: " + this.getPlayer().getTotalDamage() +
-                " | Armor: " + this.getPlayer().getInventory().getArmor().getArmor() +
-                " | Block: " + this.getPlayer().getInventory().getArmor().getBlock() +
-                " | Health: " + this.getPlayer().getHealth() +
-                " | Gold: " + this.getPlayer().getGold());
+                           " | Damage: " + this.getPlayer().getTotalDamage() +
+                           " | Armor: " + this.getPlayer().getInventory().getArmor().getArmor() +
+                           " | Block: " + this.getPlayer().getInventory().getArmor().getBlock() +
+                           " | Health: " + this.getPlayer().getHealth() +
+                           " | Gold: " + this.getPlayer().getGold());
     }
 
     public void monsterStats(int i) {
         System.out.println("<< " + i + ". " + this.getMonster().getMonster() + "'s Stats >>");
         System.out.println("Damage: " + this.getMonster().getDamage() +
-                " | Health: " + this.getMonster().getHealth() +
-                " | Reward: " + this.getMonster().getReward());
+                           " | Health: " + this.getMonster().getHealth() +
+                           " | Reward: " + this.getMonster().getReward());
     }
 
     public int randomMonsters() {

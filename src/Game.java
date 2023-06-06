@@ -9,7 +9,7 @@ public class Game {
 
     public void start() {
         System.out.print("\t* * * Welcome! * * *\n\n" +
-                "\tEnter a name to your character to start the game: ");
+                         "\tEnter a name to your character to start the game: ");
         String playerName = scan.nextLine();
         player = new Player(playerName);
 
@@ -42,15 +42,15 @@ public class Game {
     public void game() {
         System.out.println();
         System.out.println("|| Regions ||\n" +
-                "0 - Quit Game\n" +
-                "1 - Safe House\n" +
-                "2 - Shop\n" +
-                "3 - Sahara Desert\n" +
-                "4 - Spider Dungeon\n" +
-                "5 - Great Mountain\n" +
-                "6 - Ghost Forest\n" +
-                "7 - Land of Giants\n" +
-                "8 - Iceland");
+                           "0 - Quit Game\n" +
+                           "1 - Safe House\n" +
+                           "2 - Shop\n" +
+                           "3 - Sahara Desert\n" +
+                           "4 - Spider Dungeon\n" +
+                           "5 - Great Mountain\n" +
+                           "6 - Ghost Forest\n" +
+                           "7 - Land of Giants\n" +
+                           "8 - Iceland");
         System.out.println();
         System.out.print("\tWhere do you want to go to? Select a region: ");
         int region = scan.nextInt();
@@ -64,8 +64,8 @@ public class Game {
                 location = new SafeHouse(player);
                 if (this.player.getInventory().getMaterialList().size() == 6) {
                     System.out.println("\tYou have collected all the materials.\n\n" +
-                            "\t* * * Congratulations! * * *\n" +
-                            "\t* * * You Won The Game! * * *");
+                                       "\t* * * Congratulations! * * *\n" +
+                                       "\t* * * You Won The Game! * * *");
                     result = false;
                     location = null;
                 }

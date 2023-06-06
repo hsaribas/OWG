@@ -1,8 +1,8 @@
-import Monsters.IceGolem;
+import Monsters.IceGollum;
 
 public class Iceland extends BattleLocations {
 
     public Iceland(Player player) {
-        super(player, "Iceland", new IceGolem(), "Ice globe", 3);
+        super(player, "Iceland", new IceGollum(), "Ice globe", 3);
     }
 }
