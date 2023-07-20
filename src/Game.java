@@ -52,10 +52,11 @@ public class Game {
                            "7 - Land of Giants\n" +
                            "8 - Iceland");
         System.out.println();
+
         System.out.print("\tWhere do you want to go to? Select a region: ");
         int region = scan.nextInt();
-
         System.out.println();
+
         switch (region) {
             case 0:
                 location = null;

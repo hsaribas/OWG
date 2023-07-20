@@ -17,11 +17,11 @@ public abstract class BattleLocations extends Location {
 
     @Override
     public boolean onLocation() {
-        int count = randomMonsters();
+        int numOfMons = randomMonsters();
         System.out.println("\tNow you are in -> [" + this.getLocation() + "]\n" +
-                           "\tGet ready to fight " + count + " " + this.getMonster().getMonster() + ".");
+                           "\tGet ready to fight " + numOfMons + " " + this.getMonster().getMonster() + ".");
 
-        if (fight(count)) {
+        if (fight(numOfMons)) {
             return true;
         }
         if (this.getPlayer().getHealth() <= 0) {

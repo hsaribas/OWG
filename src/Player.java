@@ -67,7 +67,7 @@ public class Player {
     public void showInfo() {
         System.out.println("Hero: " + this.getHero() +
                            " | Weapon: " + this.getInventory().getWeapon().getWeapon() +
-                           " | Damage: " + (this.getDamage() + this.getInventory().getWeapon().getDamage()) +
+                           " | Damage: " + this.getTotalDamage() +
                            " | Armor: " + this.getInventory().getArmor().getArmor() +
                            " | Blocking: " + this.getInventory().getArmor().getBlock() +
                            " | Health: " + this.getHealth() +
@@ -108,7 +108,7 @@ public class Player {
     }
 
     public int getTotalDamage() {
-        return damage + this.getInventory().getWeapon().getDamage();
+        return damage + inventory.getWeapon().getDamage();
     }
 
     public int getHealth() {
